@@ -1,0 +1,13 @@
+function transferData() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();//define your spreadsheet
+  
+  var sourceSheet=ss.getSheetByName("source"); //define your source tab
+  var destinationSheet = ss.getSheetByName("destination");// define your destination tab
+  var lastRow = sourceSheet.getLastRow(); // get last row in your source sheet so that you can copy until last row
+  var lastColumn = sourceSheet.getLastColumn();
+  var sourceData = sourceSheet.getRange(2, 1, lastRow-1, lastColumn).getValues();
+  
+destinationSheet.getRange(destinationSheet.getLastRow()+1,1,4,2).setValues(sourceData);
+
+//console.log(sourceData);
+}
